@@ -17,28 +17,130 @@ import OwnerAllBookings from "./modules/user/owner/AllBookings";
 import RenterHome from "./modules/user/renter/RenterHome";
 import RenterAllProperties from "./modules/user/renter/AllProperties";
 
+import Layout from "./components/Layout";
+import RequireAdmin from "./components/RequireAdmin";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
 
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
 
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={
+            <Layout>
+              <Register />
+            </Layout>
+          }
+        />
 
-        <Route path="/admin" element={<AdminHome />} />
-        <Route path="/admin/users" element={<AllUsers />} />
-        <Route path="/admin/properties" element={<AdminAllProperty />} />
-        <Route path="/admin/bookings" element={<AdminAllBookings />} />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <Layout>
+                <AdminHome />
+              </Layout>
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <RequireAdmin>
+              <Layout>
+                <AllUsers />
+              </Layout>
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin/properties"
+          element={
+            <RequireAdmin>
+              <Layout>
+                <AdminAllProperty />
+              </Layout>
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin/bookings"
+          element={
+            <RequireAdmin>
+              <Layout>
+                <AdminAllBookings />
+              </Layout>
+            </RequireAdmin>
+          }
+        />
 
-        <Route path="/owner" element={<OwnerHome />} />
-        <Route path="/owner/add-property" element={<AddProperty />} />
-        <Route path="/owner/properties" element={<OwnerAllProperties />} />
-        <Route path="/owner/bookings" element={<OwnerAllBookings />} />
+        <Route
+          path="/owner"
+          element={
+            <Layout>
+              <OwnerHome />
+            </Layout>
+          }
+        />
+        <Route
+          path="/owner/add-property"
+          element={
+            <Layout>
+              <AddProperty />
+            </Layout>
+          }
+        />
+        <Route
+          path="/owner/properties"
+          element={
+            <Layout>
+              <OwnerAllProperties />
+            </Layout>
+          }
+        />
+        <Route
+          path="/owner/bookings"
+          element={
+            <Layout>
+              <OwnerAllBookings />
+            </Layout>
+          }
+        />
 
-        <Route path="/renter" element={<RenterHome />} />
-        <Route path="/renter/properties" element={<RenterAllProperties />} />
+        <Route
+          path="/renter"
+          element={
+            <Layout>
+              <RenterHome />
+            </Layout>
+          }
+        />
+        <Route
+          path="/renter/properties"
+          element={
+            <Layout>
+              <RenterAllProperties />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
